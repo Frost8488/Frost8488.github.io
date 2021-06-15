@@ -1,0 +1,595 @@
+* {
+  margin: 0;
+  padding: 0;
+  /* it makes sure that the elements stays the way we actually set up and won't expand the element if we add any margins or paddings (the padding will be applied inside the element) */
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+  --light: #ffd60a;
+  --dark: #000814;
+  --palePink: #ffc300;
+  --cottonCandy: #003566;
+  --persianPink: #001d3d;
+}
+/*  nav */
+.nav {
+  background: var(--light);
+}
+
+.nav_header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.25rem 1rem;
+  border-bottom: 0.5rem solid var(--dark);
+}
+
+.nav_logo {
+  height: 100px;
+  align-self: center;
+}
+
+.nav_button {
+  font-size: 3rem;
+  /* because its a child it can do align self */
+  align-self: center;
+  color: var(--dark);
+}
+
+.nav_links {
+  list-style-type: none;
+  background: var(--cottonCandy);
+}
+
+.nav_single-link {
+  display: block;
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: var(--light);
+  padding: 0.5rem 1rem;
+  font-style: italic;
+  text-transform: uppercase;
+  transition: all 1s linear;
+}
+
+.nav_single-link:hover {
+  background: var(--light);
+  color: var(--cottonCandy);
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+}
+
+.nav_links {
+  height: 0;
+  overflow: hidden;
+  transition: all 0.5s linear;
+}
+
+.show_links {
+  height: 288px;
+}
+
+@media screen and (min-width: 800px) {
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 0.5rem solid var(--dark);
+  }
+  .nav_header {
+    border: none;
+  }
+
+  .nav_button {
+    display: none;
+  }
+
+  .nav_links {
+    /* as child */
+    height: auto;
+    background: transparent;
+    flex: 1 0 auto;
+    /* as parent */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-self: center;
+  }
+
+  .nav_single-link {
+    color: var(--dark);
+    background: transparent;
+    flex: 1 0 100px;
+  }
+
+  .nav_single-link:hover {
+    padding: 0.5rem 1rem;
+    background: var(--persianPink);
+    color: var(--palePink);
+  }
+}
+/* end of nav */
+
+/* header */
+.header {
+  min-height: 100vh;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.3),
+      rgba(255, 255, 255, 0.3)
+    ),
+    url('./background.jpg') center/cover fixed no-repeat;
+  display: flex;
+  flex-direction: column;
+}
+/* end of header */
+
+/* banner */
+.banner {
+  /* as a flex child */
+  /* flex: grow as much as necessary//do not shrink//actual basis: auto */
+  flex: 1 0 auto;
+  /* as a flex parent */
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  text-align: center;
+  padding-bottom: 4rem;
+  font-weight: 700;
+}
+
+.banner__title {
+  font-size: 4rem;
+  letter-spacing: 0.1rem;
+  margin-bottom: 0.5rem;
+  border-top: 10px solid var(--dark);
+  border-top-left-radius: 5rem;
+  border-bottom: 10px solid var(--dark);
+  border-bottom-right-radius: 5rem;
+}
+
+.banner__jobs {
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-style: italic;
+  color: var(--dark);
+}
+
+.banner__jobs-single-job {
+  transition: all 1s ease;
+}
+
+.banner__jobs-single-job:hover {
+  color: blue;
+}
+
+/* end of banner */
+
+/* about section */
+.about {
+  padding: 2rem 0;
+  background: var(--palePink);
+}
+
+.about__center {
+  max-width: 90vw;
+  margin: 2rem auto;
+}
+
+.about__image {
+  margin: 3rem 0;
+  position: relative;
+}
+
+.about__image_photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+.about__image::before {
+  content: "";
+  background: var(--dark);
+  width: 100%;
+  height: 100%;
+  /* IF WE ARE USING 'BEFORE' AND SETTING THE POSITION AS 'ABSOLUTE' WE MUST MAKE SURE THE POSITION OF BEFORE'S CLASS IS 'RELATIVE' */
+  position: absolute;
+  bottom: -10px;
+  left: -10px;
+}
+
+.about-info {
+  /* MARGIN SO THAT WE CAN MAKE SURE THAT IN A SMALL SCREEN, THEY WON'T BUMP INTO EACH OTHER */
+  margin: 3rem 0;
+  text-align: center;
+}
+
+.about-info__title {
+  display: inline-block;
+  font-size: 4rem;
+  text-transform: capitalize;
+  letter-spacing: 0.5rem;
+  background: url('./color-splash.png') left/contain no-repeat;
+}
+
+.about-info__text {
+  color: var(--dark);
+  line-height: 1.5rem;
+  font-size: 1.2rem;
+  margin: 3rem 0;
+}
+
+.about-info__single-link {
+  /* inline block because we want margins and paddings and this will be a better way */
+  display: inline-block;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+  letter-spacing: 0.2rem;
+  background: var(--dark);
+  border: 3px solid var(--persianPink);
+  color: var(--light);
+  font-weight: bold;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  transition: 3s all;
+}
+
+.about-info__single-link:hover {
+  color: var(--persianPink);
+  background: var(--light);
+  border: 3px dotted var(--persianPink);
+}
+
+/* end of about section */
+
+@media screen and (min-width: 900px) {
+  .about__center {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .about-info,
+  .about__image {
+    /* flex: no grow,, no shrink,, calc... */
+    flex: 0 0 calc(50% - 1rem);
+  }
+
+  .about-info {
+    display: flex;
+    align-items: center;
+  }
+
+  .about__image {
+    height: 100%;
+    width: auto;
+    display: flex;
+    align-self: center;
+  }
+}
+
+/* services section */
+.section_title {
+  text-align: center;
+  margin: 3rem;
+}
+
+.section_title-name {
+  font-size: 5rem;
+  font-style: italic;
+  display: inline-block;
+  background: url("./color-splash.png") right/contain no-repeat;
+}
+
+.services {
+  padding: 1rem;
+  border-top: 5px dotted var(--dark);
+  background: var(--palePink);
+}
+
+.services_center {
+  max-width: 80%;
+  margin: 2rem auto;
+}
+
+.services_single-service {
+  margin: 2rem 0;
+  padding: 3rem 0;
+  text-align: center;
+  transition: all 0.5s ease;
+}
+
+.services_icon {
+  font-size: 2rem;
+}
+
+.services_single-service-title {
+  font-size: 2rem;
+  padding: 1rem 0;
+}
+
+.services_single-service-text {
+  width: 80%;
+  margin: 0 auto;
+  line-height: 1.5;
+  letter-spacing: 0.2rem;
+}
+
+.services_single-service:hover {
+  background: var(--persianPink);
+  color: var(--palePink);
+  box-shadow: 0 20px 15px var(--dark);
+}
+
+@media screen and (min-width: 850px) {
+  .services_center {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .services_single-service {
+    flex: 0 0 calc(50% - 1rem);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .services_single-service {
+    flex: 0 0 calc(33.3333% - 0.5rem);
+  }
+}
+
+/* end of services section */
+/* numbers section practice */
+.numbers {
+  margin: 0;
+  padding: 2rem 0;
+  color: var(--light);
+  height: fit-content;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("./business-cat.jpg") top/cover no-repeat;
+  background-attachment: fixed;
+}
+
+.numbers_title {
+  text-align: center;
+}
+
+.numbers_title-name {
+  display: inline-block;
+  background: url("./color-splash.png") right/contain no-repeat;
+  font-size: 5rem;
+  font-style: italic;
+}
+
+.numbers_body {
+  text-align: center;
+  margin: 5rem auto;
+}
+
+.numbers_body-single {
+  margin: 5rem auto;
+}
+
+.numbers_icon {
+  font-size: 3rem;
+}
+
+.numbers_numbers {
+  font-size: 2rem;
+  letter-spacing: 0.2rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+}
+
+.numbers_body-title {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+}
+
+@media screen and (min-width: 700px) {
+  .numbers_body {
+    display: flex;
+    flex: 0 0 calc(50% - 1rem);
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .numbers_body-single {
+    margin: 3rem 3rem;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .numbers_body {
+    flex: 0 0 calc(33.3333% - 0.5rem);
+  }
+}
+
+/* end of numbers section practice */
+
+.projects {
+  padding: 3rem 0;
+  background: var(--light);
+}
+
+.projects_center {
+  max-width: 90vw;
+  margin: 2rem auto;
+}
+
+.projects_single-project {
+  margin: 2rem auto;
+  position: relative;
+}
+
+.projects_single-project-image {
+  display: block;
+  width: 100%;
+  border-radius: 0.25rem;
+}
+
+.projects_single-project::before {
+  content: "";
+  background: var(--dark);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform: scale(0);
+  transition: all 1s ease;
+  opacity: 0;
+}
+
+.projects_single-project:hover:before {
+  transform: scale(1);
+  opacity: 0.5;
+}
+
+.projects_single-project-icon {
+  color: deepskyblue;
+  position: absolute;
+  font-family: monospace;
+  top: 50%;
+  left: 50%;
+  font-size: 3rem;
+  text-decoration: none;
+  font-style: italic;
+  border-top: 10px solid var(--light);
+  border-top-left-radius: 5rem;
+  border-bottom: 10px solid var(--light);
+  border-bottom-right-radius: 5rem;
+  transform: scale(0);
+  opacity: 0;
+  transition: all 1s ease;
+}
+
+.projects_single-project-icon:hover {
+  color: cyan;
+}
+
+.projects_single-project:hover .projects_single-project-icon {
+  opacity: 1;
+  transform: scale(1) translate(-50%, -50%);
+}
+
+@media screen and (min-width: 700px) {
+  .projects_center {
+    display: flex;
+    flex-wrap: wrap;
+    justify-items: space-between;
+  }
+  .projects_single-project {
+    flex: 0 0 calc(50% - 0.5rem);
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .projects_single-project {
+    flex: 0 0 calc(25% - 0.5rem);
+  }
+}
+
+/* end of projects section */
+
+/* contact section */
+
+.contact {
+  background: gainsboro;
+  padding: 3rem 0;
+}
+
+.contact_center {
+  max-width: 80vw;
+  margin: 2rem auto;
+}
+
+.contact_header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+}
+
+.contact_name,
+.contact_email,
+.contact_textarea {
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid var(--dark);
+  padding: 0.25rem 0;
+  margin: 2rem 0;
+  font-size: 1.2rem;
+}
+
+.contact_name,
+.contact_email {
+  flex: 0 0 calc(50% - 2rem);
+}
+
+.contact_textarea-comment {
+  display: inline-block;
+  font-size: 1.25rem;
+  font-style: italic;
+  border-radius: 0.7rem;
+  border-bottom-left-radius: 0;
+  border-bottom: 3px solid var(--cottonCandy);
+}
+
+.contact_textarea {
+  width: 100%;
+}
+
+.contact_button {
+  background: var(--persianPink);
+  color: var(--palePink);
+  display: block;
+  margin: 0 auto;
+  padding: 0.5rem 1rem;
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+  transition: all 0.5s linear;
+}
+
+.contact_button:hover {
+  background: var(--palePink);
+  color: var(--persianPink);
+  border: 3px dotted var(--persianPink);
+}
+
+.contact_icon {
+  margin-right: 0.5rem;
+}
+
+/* end of contatct */
+
+/* footer section */
+
+footer {
+  background: var(--persianPink);
+  padding: 2rem;
+}
+
+.footer_icons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.footer_single-icon {
+  color: var(--palePink);
+  transition: all 1s ease;
+  font-size: 3rem;
+}
+
+.footer_single-icon:hover {
+  opacity: 0.5;
+}
+
+/* end of footer */
